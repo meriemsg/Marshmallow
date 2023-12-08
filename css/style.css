@@ -1,0 +1,662 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+@font-face {
+    font-family: digital-7;
+    src: url("../fonts/digital-7.ttf");
+}
+
+html html,
+body,
+button,
+div,
+p,
+h1,
+img,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --border: #735331d1;
+    --night: black;
+    --day: #ebaf6dd1;
+    --white: white;
+    --bleu: #0c2d44;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+p.placeholder {
+    display: none;
+}
+
+body {
+    color: var(--white);
+    font-family: Poppins;
+}
+
+.title {
+    font-size: 40px;
+}
+
+.timeDisplay {
+    font-size: 80px;
+}
+
+.setter {
+    font-size: 57px;
+    border: none;
+    background: var(--white);
+    color: #071823;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+* {
+    transition: 0.2s;
+}
+
+.setter:hover {
+    background: rgb(9, 162, 14);
+    color: #071823;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.hours {
+    display: inline-block;
+}
+
+.minutes {
+    display: inline-block;
+}
+
+.controllButtons {
+    size: 235px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 11px;
+    padding-top: 25px;
+    padding-bottom: 13px;
+}
+
+.wakeUp {
+    display: none;
+    color: red;
+    size: 100px;
+}
+
+section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--bleu);
+    padding: 20px;
+    min-width: 602px;
+    min-height: 500px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    border-radius: 40px;
+}
+
+.section2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--day) !important;
+    padding: 20px;
+    min-width: 602px;
+    min-height: 500px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    border-radius: 40px;
+}
+
+.textday {
+    text-align: center;
+    color: rgb(19 18 18);
+    font-size: 25px;
+    border: 2px solid #735331;
+    border-radius: 25px;
+    background-color: transparent;
+    padding: 7px;
+}
+
+.closeS {
+    position: absolute;
+    top: -16px;
+    right: 19px;
+    font-size: 29px;
+    font-family: cursive;
+    background-color: var(--white);
+    padding: 19px;
+    border-radius: 50%;
+    color: black;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.alarmTop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.timeSetter {
+    display: flex;
+    gap: 12px;
+}
+
+.p1 {
+    text-align: center;
+    font-size: 25px;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 7px;
+    margin-top: 25px;
+}
+
+.p1:hover {
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+}
+
+.controllButtons button,
+.snoozeSetter,
+#snoozeModified {
+    text-align: center;
+    color: var(--white);
+    font-size: 25px;
+    border: 2px solid var(--white);
+    border-radius: 25px;
+    background-color: transparent;
+    padding: 7px;
+}
+
+.controllButtons button:hover,
+#snoozeModified:hover {
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+}
+
+#snoozeModified {
+    text-align: center;
+    color: var(--white);
+    font-size: 25px;
+    border: 2px solid var(--white);
+    border-radius: 25px;
+    background-color: transparent;
+    padding: 5px 24px;
+}
+
+.snoozeSetter {
+    margin-bottom: 20px;
+}
+
+.snoozeSetter:hover {
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+}
+
+#snoozeForm {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.ng-scope {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: rgb(8, 28, 42);
+    font-family: digital-7, sans-serif;
+}
+
+div.days {
+    margin: 0px auto;
+    color: rgb(19, 18, 18);
+}
+
+div.days .day {
+    display: inline-block;
+}
+
+div.days .day p {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+div.clock {
+    margin: 5px 0px;
+}
+
+div.clock div {
+    display: inline-block;
+    position: relative;
+}
+
+div.clock div p {
+    font-size: 100px;
+    position: relative;
+    z-index: 100;
+}
+
+div.clock .placeholder {
+    color: rgb(19, 18, 18);
+    position: absolute;
+    top: 0px;
+    z-index: 50;
+}
+
+div.clock .meridian {
+    margin-left: 15px;
+}
+
+.am-pm {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    width: 20px;
+}
+
+div.am-pm div p {
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.am,
+.pm {
+    color: rgb(19, 18, 18);
+}
+
+.light-on {
+    color: rgb(255, 255, 255);
+}
+
+body main {
+    font-family: digital-7, sans-serif;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body main.clock-display {
+    display: inline-block;
+    text-align: center;
+    padding: 45px 54px;
+    border-radius: 10px;
+    margin: 60px auto 0px;
+    background-color: var(--bleu);
+    color: rgb(221 215 215);
+    box-shadow: rgba(0, 0, 0, 0.3) 4px 4px 7px 4px;
+    width: 500px;
+}
+
+.light-on {
+    color: rgb(255, 255, 255) !important;
+}
+
+.date-field {
+    margin: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-field div {
+    display: inline-block;
+    position: relative;
+}
+
+.TimeStyle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.p2 {
+    font-size: 37px;
+    font-weight: 900;
+    font-family: fantasy;
+}
+
+.date-field div p {
+    font-size: 34px;
+    position: relative;
+    z-index: 100;
+}
+
+.date-field div p.placeholder {
+    color: rgb(43, 40, 40);
+    position: absolute;
+    top: 0px;
+    z-index: 50;
+}
+
+.date-field div.day-of-week-mobile {
+    display: none;
+}
+
+.date-field div.day-of-week p {
+    font-size: 50px;
+}
+
+.date-field div p.type {
+    font-size: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .date-field {
+        justify-content: space-evenly;
+    }
+    .date-field div.day-of-week {
+        display: none;
+    }
+    .date-field div.day-of-week-mobile {
+        display: inline-block;
+    }
+    .date-field div.day-of-week-mobile p {
+        font-size: 56px;
+        margin-top: -2px;
+    }
+}
+
+@media (max-width: 550px) {
+    .date-field div.day-of-week-mobile p {
+        font-size: 50px;
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 468px) {
+    .date-field div.day-of-week-mobile p {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 400px) {
+    .date-field div.day-of-week-mobile p {
+        font-size: 20px;
+    }
+}
+
+.clock-field {
+    margin: 5px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.clock-field div {
+    display: inline-block;
+    position: relative;
+}
+
+.clock-field div p {
+    font-size: 100px;
+    position: relative;
+    z-index: 100;
+}
+
+.clock-field .numbers .placeholder {
+    color: rgb(43, 40, 40);
+    position: absolute;
+    top: 0px;
+    z-index: 50;
+}
+
+.clock-field .numbers .type {
+    font-size: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    margin-top: -10px;
+}
+
+.clock-field .am-pm {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    width: 20px;
+}
+
+.clock-field .am-pm div p {
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.clock-field .am,
+.clock-field .pm {
+    color: rgb(43, 40, 40);
+}
+
+@media (max-width: 768px) {
+    main.clock-display {
+        padding: 15px 30px;
+    }
+    .desktop-view {
+        display: none;
+    }
+}
+
+@media (max-width: 550px) {
+    .date-field div p {
+        font-size: 30px;
+    }
+    .clock-field div p {
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 468px) {
+    .date-field div p {
+        font-size: 24px;
+    }
+    .clock-field div p {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .date-field div p {
+        font-size: 20px;
+    }
+    .days .day p,
+    .clock-field .am-pm div p {
+        font-size: 10px;
+    }
+    .clock-field div p {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 350px) {
+    .date-field div p {
+        font-size: 20px;
+    }
+    .clock-field div p {
+        font-size: 43px;
+    }
+}
+
+@media (max-width: 320px) {
+    .clock-field div p {
+        font-size: 40px;
+    }
+}
+
+span {
+    display: none;
+}
+
+canvas {
+    width: 250px;
+    height: 500px;
+}
+
+#doughnutChart {
+    margin: auto;
+}
+
+
+/*chart */
+
+article {
+    margin-top: 35px;
+}
+
+
+/* Slider */
+
+.mySlides {
+    display: none
+}
+
+img {
+    vertical-align: middle;
+}
+
+
+/* Slideshow container */
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: -20px;
+    /* width: auto; */
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    display: flex;
+    padding-top: 25px;
+}
+
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover,
+.next:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Caption text */
+
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+/* Number text (1/3 etc) */
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+
+/* The dots/bullets/indicators */
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #717171;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #bbb;
+}
+
+
+/* Fading animation */
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+
+/* On smaller screens, decrease text size */
+
+@media only screen and (max-width: 300px) {
+    .prev,
+    .next,
+    .text {
+        font-size: 11px
+    }
+}

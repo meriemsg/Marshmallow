@@ -1,0 +1,220 @@
+<!-- TODO:
+Time/day background - change according to when the time was set
+Hover over "time set" message to see how far away the alarm is
+-->
+<!DOCTYPE html>
+<html ng-app="TimerApp">
+
+<head>
+    <title> My Alarm Clock </title>
+
+    <!-- css: -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url(./img/night.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+    <main id="clockDisplay" class="clock-display">
+        <div class="date-field">
+            <div class="day-of-week">
+                <p class="day-alpha"></p>
+                <p class="placeholder">mmmmmmmmm</p>
+                <p class="placeholder">ooooooooo</p>
+                <p class="placeholder">nnnnnnnnn</p>
+                <p class="placeholder">ttttttttt</p>
+                <p class="placeholder">uuuuuuuuu</p>
+                <p class="placeholder">eeeeeeeee</p>
+                <p class="placeholder">sssssssss</p>
+                <p class="placeholder">wwwwwwwww</p>
+                <p class="placeholder">hhhhhhhhh</p>
+                <p class="placeholder">rrrrrrrrr</p>
+                <p class="placeholder">fffffffff</p>
+                <p class="placeholder">iiiiiiiii</p>
+                <p class="placeholder">ddddddddd</p>
+                <p class="placeholder">aaaaaaaaa</p>
+                <p class="placeholder">yyyyyyyyy</p>
+            </div>
+            <div class="day-of-week-mobile">
+                <p class="day-alpha-mobile"></p>
+                <p class="placeholder">mmm</p>
+                <p class="placeholder">ooo</p>
+                <p class="placeholder">nnn</p>
+                <p class="placeholder">ttt</p>
+                <p class="placeholder">uuu</p>
+                <p class="placeholder">eee</p>
+                <p class="placeholder">sss</p>
+                <p class="placeholder">www</p>
+                <p class="placeholder">hhh</p>
+                <p class="placeholder">rrr</p>
+                <p class="placeholder">fff</p>
+                <p class="placeholder">iii</p>
+            </div>
+            <div class="month">
+                <p class="month-alpha"></p>
+                <p class="placeholder">mmm</p>
+                <p class="placeholder">ooo</p>
+                <p class="placeholder">nnn</p>
+                <p class="placeholder">ttt</p>
+                <p class="placeholder">uuu</p>
+                <p class="placeholder">eee</p>
+                <p class="placeholder">sss</p>
+                <p class="placeholder">www</p>
+                <p class="placeholder">hhh</p>
+                <p class="placeholder">rrr</p>
+                <p class="placeholder">fff</p>
+                <p class="placeholder">iii</p>
+                <p class="placeholder">ddd</p>
+                <p class="placeholder">aaa</p>
+                <p class="placeholder">yyy</p>
+                <p class="type">month</p>
+            </div>
+            <div class="date">
+                <p class="date-number"></p>
+                <p class="placeholder">88</p>
+                <p class="type">day</p>
+            </div>
+            <div class="year">
+                <p class="year-number"></p>
+                <p class="placeholder">8888</p>
+                <p class="type">year</p>
+            </div>
+        </div>
+        <div class="clock-field">
+            <div class="numbers">
+                <p class="hours"></p>
+                <p class="placeholder">88</p>
+                <p class="type">hour</p>
+            </div>
+            <div class="colon">
+                <p>:</p>
+            </div>
+            <div class="numbers">
+                <p class="minutes"></p>
+                <p class="placeholder">88</p>
+                <p class="type">minute</p>
+            </div>
+            <div class="colon">
+                <p>:</p>
+            </div>
+            <div class="numbers">
+                <p class="seconds"></p>
+                <p class="placeholder">88</p>
+                <p class="type">second</p>
+            </div>
+            <div class="am-pm">
+                <div>
+                    <p class="am">am</p>
+                </div>
+                <div>
+                    <p class="pm">pm</p>
+                </div>
+            </div>
+        </div>
+        <div class="bottomAlarm">
+            <p onclick="OpenWindow()" class="p1">
+                Set Alarm
+            </p>
+        </div>
+        <article>
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <canvas id="myChart"></canvas>
+                    <div class="text">mouvement Chart</div>
+                </div>
+                <div class="mySlides fade">
+                    <canvas id="myChart2"></canvas>
+                    <div class="text">temperature chart</div>
+                </div>-
+                <div class="mySlides fade">
+                    <canvas id="doughnutChart"></canvas>
+                    <div class="text">Doughnut and Pie Charts</div>
+                </div>
+
+
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+
+
+        </article>
+    </main>
+
+
+    <section>
+        <div ng-controller="alarmAppController">
+
+            <b id="title" class="title"> Set your time </b>
+
+            <p id="timeDisplay" ng-attr-id="timeDisplay" class="timeDisplay">
+                <strong> {{displayHours}} : {{displayMinutes}} </strong>
+            </p>
+
+            <div class="TimeStyle">
+                <button ng-click="incrHours()" class="setter">+</button>
+                <button ng-click="decrHours()" class="setter">-</button>
+                <p class="p2">:</p>
+                <button ng-click="incrMinutes()" class="setter">+</button>
+                <button ng-click="decrMinutes()" class="setter">-</button>
+            </div>
+
+            <div class="controllButtons">
+                <button id="setTime" ng-click="setAlarm()">Set time</button>
+                <button ng-click="stopAlarm()">Stop</button>
+                <button ng-click="cancelAlarm()"> Cancel </button>
+                <button ng-click="setSnooze()"> Snooze </button>
+            </div>
+
+            <p id="alarmMessage" class="wakeUp"> Wake Up !</p>
+            <p id="alarmSet"> Alarm is not set</p>
+
+
+            <button id="modifySnooze" class="snoozeSetter"> Set Snooze </button>
+
+            <div id="snoozeForm" class="changeSnooze">
+
+                <div style="vertical-align: middle;">
+                    <input type="number" id="newSnooze" ng-value="snoozeTime" min="1" max="20" style="
+						width : 60px;
+						height: 20px;">
+                </div>
+                <p class="closeS" id="closeBtn">
+                    X
+                </p>
+                <button id="snoozeModified"> Set </button>
+            </div>
+
+        </div>
+
+    </section>
+    </div>
+
+
+
+    <!-- Angular JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <!-- Jquery TODO : find online link to this library:-->
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/Timer.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/chart.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
